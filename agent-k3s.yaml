@@ -1,0 +1,7 @@
+- name: setup agent k3s
+  become: yes
+  hosts: all
+  tasks:
+    - name: Installing k3s agent
+      ansible.builtin.shell:
+        cmd: curl -sfL https://get.k3s.io | K3S_URL=https://"{{server_master}}":6443 K3S_TOKEN="{{token}}" sh -
